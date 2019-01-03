@@ -1,0 +1,19 @@
+# Brief:
+# 	该脚本，将输入的文件或是目录(递归)中的文件编码格式，自动转换为目标格式，添加-r选项后，则直接替换原有文件
+# Notice:
+#	1.检测到ISO-8859前缀的，但是iconv没有完全匹配的编码类型的话（如：ISO_8859-1，ISO_8859-2），则统一视为GBK
+#	2.需要系统支持icionv，file等指令
+#	3.-o,-r选项不能共存
+#	4.经测试，当文件类型为GBK时，file指令不加参数的话，显示编码类型为ISO-8859；file指令加 -i 参数的话，显示编码类型为ISO-8859-1
+#Param
+#	-o DstPath 目的路径
+#	-t DstEncode 目的编码类型（具体支持的编码类型，可通过 iconv -l 查看）
+#	-r 直接覆盖源文件
+#	[SrcPath] 原路径(文件、目录)
+#Example
+#	1.覆盖源文件
+#	ConvertEncode.sh -r -t GBK SrcPath  
+#	2.转码后，并保存在指定目录
+#	ConvertEncode.sh -t GBK SrcPath  -o DstPath 
+# History:
+# 2018/12/29	Litost_Cheng	First release
